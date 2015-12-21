@@ -1,3 +1,10 @@
+v3.0.0
+- Implemented support for multiple (up to 10) m3u sources
+- Added settings for channel, group and logo name format
+- Added support for the url-tvg tag
+- Fixed support for tvg-logo URLs
+- Enabled the pause button
+
 v2.4.4
 - Fix: Handle time offset in EPG programme start and end times.
 

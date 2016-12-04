@@ -1,3 +1,7 @@
+v3.0.4
+- Updated to PVR addon API v5.2.1
+- Change addon ID to pvr.iptvsimple.multi
+
 v3.0.0
 - Implemented support for multiple (up to 10) m3u sources
 - Added settings for channel, group and logo name format

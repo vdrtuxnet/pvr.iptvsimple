@@ -1,4 +1,4 @@
-v3.0.4
+v3.0.1
 - Updated to PVR addon API v5.2.1
 - Change addon ID to pvr.iptvsimple.multi
 

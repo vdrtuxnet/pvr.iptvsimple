@@ -1,4 +1,4 @@
-project(pvr.iptvsimple)
+project(pvr.iptvsimple.multi)
 
 cmake_minimum_required(VERSION 2.6)
 
@@ -23,6 +23,6 @@ message(STATUS "ZLIB_LIBRARIES: ${ZLIB_LIBRARIES}")
 set(IPTV_SOURCES src/client.cpp
                  src/PVRIptvData.cpp)
 
-build_addon(pvr.iptvsimple IPTV DEPLIBS)
+build_addon(pvr.iptvsimple.multi IPTV DEPLIBS)
 
 include(CPack)

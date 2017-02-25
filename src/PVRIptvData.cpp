@@ -101,7 +101,7 @@ void PVRIptvData::LoadSettings() {
   const char   *fmt = "%s_%i";
   float         fShift;
   char          nameBuffer[128];
-  char          valueBuffer[1024];
+  char          valueBuffer[4096];
   int           iPathType = 0;
   int           iSourceCount = 1;
 
@@ -522,8 +522,8 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
   tmpChannel.strTvgLogo     = "";
   tmpChannel.iTvgShift      = 0;
 
-  char szLine[1024];
-  while(stream.getline(szLine, 1024)) 
+  char szLine[4096];
+  while(stream.getline(szLine, 4096)) 
   {
   
     std::string strLine(szLine);
@@ -597,7 +597,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
 
         if (strTvgId.empty())
         {
-          char buff[255];
+          char buff[1024];
           sprintf(buff, "%d", atoi(strInfoLine.c_str()));
           strTvgId.append(buff);
         }
@@ -942,8 +942,8 @@ int PVRIptvData::GetFileContents(std::string& url, std::string &strContent)
   void* fileHandle = XBMC->OpenFile(url.c_str(), 0);
   if (fileHandle)
   {
-    char buffer[1024];
-    while (int bytesRead = XBMC->ReadFile(fileHandle, buffer, 1024))
+    char buffer[4096];
+    while (int bytesRead = XBMC->ReadFile(fileHandle, buffer, 4096))
       strContent.append(buffer, bytesRead);
     XBMC->CloseFile(fileHandle);
   }

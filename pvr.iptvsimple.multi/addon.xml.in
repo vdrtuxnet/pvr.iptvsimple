@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="pvr.iptvsimple.multi" version="3.0.1" name="PVR IPTV Simple Client Multiple Playlists" provider-name="nightik">
+<addon id="pvr.iptvsimple.multi" version="3.0.2" name="PVR IPTV Simple Client Multiple Playlists" provider-name="nightik">
   <requires>
     <c-pluff version="0.1"/>
     <import addon="xbmc.pvr" version="5.2.1"/>

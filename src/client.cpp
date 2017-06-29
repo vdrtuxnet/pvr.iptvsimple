@@ -142,18 +142,6 @@ void ADDON_Destroy()
   m_CurStatus = ADDON_STATUS_UNKNOWN;
 }
 
-bool ADDON_HasSettings()
-{
-  return true;
-}
-
-unsigned int ADDON_GetSettings(ADDON_StructSetting ***sSet)
-{
-  return 0;
-}
-
-ADDON_STATUS ADDON_SetSetting(const char *settingName, const void *settingValue)
-{
   // reset cache and restart addon
   char nameBuffer[128];
 
@@ -198,14 +186,6 @@ ADDON_STATUS ADDON_SetSetting(const char *settingName, const void *settingValue)
   return ADDON_STATUS_NEED_RESTART;
 }
 
-void ADDON_Stop()
-{
-}
-
-void ADDON_FreeSettings()
-{
-}
-
 /***********************************************************
  * PVR Client AddOn specific public library functions
  ***********************************************************/
@@ -226,28 +206,6 @@ void OnPowerSavingDeactivated()
 {
 }
 
-const char* GetPVRAPIVersion(void)
-{
-  static const char *strApiVersion = XBMC_PVR_API_VERSION;
-  return strApiVersion;
-}
-
-const char* GetMininumPVRAPIVersion(void)
-{
-  static const char *strMinApiVersion = XBMC_PVR_MIN_API_VERSION;
-  return strMinApiVersion;
-}
-
-const char* GetGUIAPIVersion(void)
-{
-  return ""; // GUI API not used
-}
-
-const char* GetMininumGUIAPIVersion(void)
-{
-  return ""; // GUI API not used
-}
-
 PVR_ERROR GetAddonCapabilities(PVR_ADDON_CAPABILITIES* pCapabilities)
 {
   pCapabilities->bSupportsEPG             = true;
@@ -261,7 +219,7 @@ PVR_ERROR GetAddonCapabilities(PVR_ADDON_CAPABILITIES* pCapabilities)
 
 const char *GetBackendName(void)
 {
-  static const char *strBackendName = "IPTV Simple PVR Add-on";
+  static std::string strBackendVersion = STR(IPTV_VERSION);
   return strBackendName;
 }
 

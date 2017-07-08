@@ -49,6 +49,16 @@ std::string g_strClientPath = "";
 CHelper_libXBMC_addon *XBMC = NULL;
 CHelper_libXBMC_pvr   *PVR  = NULL;
 
+std::string g_strTvgPath    = "";
+std::string g_strM3UPath    = "";
+std::string g_strLogoPath   = "";
+int         g_iEPGTimeShift = 0;
+int         g_iStartNumber  = 1;
+bool        g_bTSOverride   = true;
+bool        g_bCacheM3U     = false;
+bool        g_bCacheEPG     = false;
+int         g_iEPGLogos     = 0;
+
 extern std::string PathCombine(const std::string &strPath, const std::string &strFileName)
 {
   std::string strResult = strPath;
@@ -80,6 +90,79 @@ extern "C" {
 
 void ADDON_ReadSettings(void)
 {
+  char buffer[1024];
+  int iPathType = 0;
+  if (!XBMC->GetSetting("m3uPathType", &iPathType)) 
+  {
+    iPathType = 1;
+  }
+  if (iPathType)
+  {
+    if (XBMC->GetSetting("m3uUrl", &buffer)) 
+    {
+      g_strM3UPath = buffer;
+    }
+    if (!XBMC->GetSetting("m3uCache", &g_bCacheM3U))
+    {
+      g_bCacheM3U = true;
+    }
+  }
+  else
+  {
+    if (XBMC->GetSetting("m3uPath", &buffer)) 
+    {
+      g_strM3UPath = buffer;
+    }
+    g_bCacheM3U = false;
+  }
+  if (!XBMC->GetSetting("startNum", &g_iStartNumber)) 
+  {
+    g_iStartNumber = 1;
+  }
+  if (!XBMC->GetSetting("epgPathType", &iPathType)) 
+  {
+    iPathType = 1;
+  }
+  if (iPathType)
+  {
+    if (XBMC->GetSetting("epgUrl", &buffer)) 
+    {
+      g_strTvgPath = buffer;
+    }
+    if (!XBMC->GetSetting("epgCache", &g_bCacheEPG))
+    {
+      g_bCacheEPG = true;
+    }
+  }
+  else
+  {
+    if (XBMC->GetSetting("epgPath", &buffer)) 
+    {
+      g_strTvgPath = buffer;
+    }
+    g_bCacheEPG = false;
+  }
+  float fShift;
+  if (XBMC->GetSetting("epgTimeShift", &fShift))
+  {
+    g_iEPGTimeShift = (int)(fShift * 3600.0); // hours to seconds
+  }
+  if (!XBMC->GetSetting("epgTSOverride", &g_bTSOverride))
+  {
+    g_bTSOverride = true;
+  }
+  if (!XBMC->GetSetting("logoPathType", &iPathType)) 
+  {
+    iPathType = 1;
+  }
+  if (XBMC->GetSetting(iPathType ? "logoBaseUrl" : "logoPath", &buffer)) 
+  {
+    g_strLogoPath = buffer;
+  }
+
+  // Logos from EPG
+  if (!XBMC->GetSetting("logoFromEpg", &g_iEPGLogos))
+    g_iEPGLogos = 0;
 }
 
 ADDON_STATUS ADDON_Create(void* hdl, void* props)
@@ -142,45 +225,28 @@ void ADDON_Destroy()
   m_CurStatus = ADDON_STATUS_UNKNOWN;
 }
 
-  // reset cache and restart addon
-  char nameBuffer[128];
+ADDON_STATUS ADDON_SetSetting(const char *settingName, const void *settingValue)
+{
+  // reset cache and restart addon 
 
-  for (int i = 0;; i++)
+  std::string strFile = GetUserFilePath(M3U_FILE_NAME_FORMAT);
+  if (XBMC->FileExists(strFile.c_str(), false))
   {
-    sprintf(nameBuffer, M3U_FILE_NAME_FORMAT, i);
-    std::string strFile = GetUserFilePath(nameBuffer);
-
-    if (XBMC->FileExists(strFile.c_str(), false))
-    {
 #ifdef TARGET_WINDOWS
-      DeleteFile(strFile.c_str());
+    DeleteFile(strFile.c_str());
 #else
-      XBMC->DeleteFile(strFile.c_str());
+    XBMC->DeleteFile(strFile.c_str());
 #endif
-    }
-    else
-    {
-      break;
-    }
   }
 
-  for (int i = 0;; i++)
+  strFile = GetUserFilePath(TVG_FILE_NAME_FORMAT);
+  if (XBMC->FileExists(strFile.c_str(), false))
   {
-    sprintf(nameBuffer, TVG_FILE_NAME_FORMAT, i);
-    std::string strFile = GetUserFilePath(nameBuffer);
-
-    if (XBMC->FileExists(strFile.c_str(), false))
-    {
 #ifdef TARGET_WINDOWS
-      DeleteFile(strFile.c_str());
+    DeleteFile(strFile.c_str());
 #else
-      XBMC->DeleteFile(strFile.c_str());
+    XBMC->DeleteFile(strFile.c_str());
 #endif
-    }
-    else
-    {
-      break;
-    }
   }
 
   return ADDON_STATUS_NEED_RESTART;
@@ -213,19 +279,22 @@ PVR_ERROR GetAddonCapabilities(PVR_ADDON_CAPABILITIES* pCapabilities)
   pCapabilities->bSupportsRadio           = true;
   pCapabilities->bSupportsChannelGroups   = true;
   pCapabilities->bSupportsRecordings      = false;
+  pCapabilities->bSupportsRecordingsRename = true;
+  pCapabilities->bSupportsRecordingsLifetimeChange = false;
+  pCapabilities->bSupportsDescrambleInfo = false;
 
   return PVR_ERROR_NO_ERROR;
 }
 
 const char *GetBackendName(void)
 {
-  static std::string strBackendVersion = STR(IPTV_VERSION);
+  static const char *strBackendName = "IPTV Simple Muli Playlist PVR Add-on";
   return strBackendName;
 }
 
 const char *GetBackendVersion(void)
 {
-  static std::string strBackendVersion = PVR_CLIENT_VERSION;
+  static std::string strBackendVersion = STR(IPTV_VERSION);
   return strBackendVersion.c_str();
 }
 
@@ -336,12 +405,9 @@ PVR_ERROR SignalStatus(PVR_SIGNAL_STATUS &signalStatus)
   return PVR_ERROR_NO_ERROR;
 }
 
-bool CanPauseStream(void) {
-  return true;
-}
-
 /** UNUSED API FUNCTIONS */
 const char * GetLiveStreamURL(const PVR_CHANNEL &channel)  { return ""; }
+bool CanPauseStream(void) { return false; }
 int GetRecordingsAmount(bool deleted) { return -1; }
 PVR_ERROR GetRecordings(ADDON_HANDLE handle, bool deleted) { return PVR_ERROR_NOT_IMPLEMENTED; }
 PVR_ERROR OpenDialogChannelScan(void) { return PVR_ERROR_NOT_IMPLEMENTED; }
@@ -390,4 +456,6 @@ time_t GetBufferTimeEnd() { return 0; }
 PVR_ERROR UndeleteRecording(const PVR_RECORDING& recording) { return PVR_ERROR_NOT_IMPLEMENTED; }
 PVR_ERROR DeleteAllRecordingsFromTrash() { return PVR_ERROR_NOT_IMPLEMENTED; }
 PVR_ERROR SetEPGTimeFrame(int) { return PVR_ERROR_NOT_IMPLEMENTED; }
+PVR_ERROR GetDescrambleInfo(PVR_DESCRAMBLE_INFO*) { return PVR_ERROR_NOT_IMPLEMENTED; }
+PVR_ERROR SetRecordingLifetime(const PVR_RECORDING*) { return PVR_ERROR_NOT_IMPLEMENTED; }
 }

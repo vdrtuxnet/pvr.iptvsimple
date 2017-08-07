@@ -522,13 +522,14 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
   tmpChannel.strTvgLogo     = "";
   tmpChannel.iTvgShift      = 0;
 
-  char szLine[4096];
-  while(stream.getline(szLine, 4096)) 
+  std::string strLine;
+  while(std::getline(stream, strLine))
   {
   
-    std::string strLine(szLine);
     strLine = StringUtils::TrimRight(strLine, " \t\r\n");
     strLine = StringUtils::TrimLeft(strLine, " \t");
+
+    XBMC->Log(LOG_DEBUG, "Read line: '%s'", strLine.c_str());
 
     if (strLine.empty())
     {
@@ -765,7 +766,6 @@ PVR_ERROR PVRIptvData::GetChannels(ADDON_HANDLE handle, bool bRadio)
       xbmcChannel.bIsRadio          = channel.bRadio;
       xbmcChannel.iChannelNumber    = channel.iChannelNumber;
       strncpy(xbmcChannel.strChannelName, channel.strChannelDisplayName.c_str(), sizeof(xbmcChannel.strChannelName) - 1);
-      strncpy(xbmcChannel.strStreamURL, channel.strStreamURL.c_str(), sizeof(xbmcChannel.strStreamURL) - 1);
       xbmcChannel.iEncryptionSystem = channel.iEncryptionSystem;
       strncpy(xbmcChannel.strIconPath, channel.strLogoPath.c_str(), sizeof(xbmcChannel.strIconPath) - 1);
       xbmcChannel.bIsHidden         = false;

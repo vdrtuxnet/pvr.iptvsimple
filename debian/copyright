@@ -1,5 +1,5 @@
 Format: http://dep.debian.net/deps/dep5
-Upstream-Name: pvr.iptvsimple
+Upstream-Name: pvr.iptvsimple.multi
 
 Files: *
 Copyright: 2013-2015 Anton Fedchin <anightik@gmail.com>

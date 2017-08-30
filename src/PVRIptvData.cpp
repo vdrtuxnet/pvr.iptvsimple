@@ -444,6 +444,7 @@ bool PVRIptvData::LoadEPG(time_t iStart, time_t iEnd, PVRIptvSource &source, int
 
     PVRIptvEpgEntry entry;
     entry.iBroadcastId = ++iBroadCastId;
+    entry.iChannelId = atoi(strId.c_str());
     entry.iGenreType = 0;
     entry.iGenreSubType = 0;
     entry.strPlotOutline = "";
@@ -894,7 +895,7 @@ PVR_ERROR PVRIptvData::GetEPGForChannel(ADDON_HANDLE handle, const PVR_CHANNEL &
 
       tag.iUniqueBroadcastId  = myTag->iBroadcastId;
       tag.strTitle            = myTag->strTitle.c_str();
-      tag.iChannelNumber      = myTag->iChannelId;
+      tag.iUniqueChannelId    = channel.iUniqueId;
       tag.startTime           = myTag->startTime + iShift;
       tag.endTime             = myTag->endTime + iShift;
       tag.strPlotOutline      = myTag->strPlotOutline.c_str();

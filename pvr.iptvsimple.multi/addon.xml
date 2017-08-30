@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="pvr.iptvsimple.multi" version="3.2.2" name="PVR IPTV Simple Client Multiple Playlists" provider-name="nightik">
-  <requires>@ADDON_DEPENDS@</requires>
-  <extension point="xbmc.pvrclient" library_@PLATFORM@="@LIBRARY_FILENAME@"/>
+  <requires>
+<import addon="kodi.binary.global.main" version="1.0.10"/>
+<import addon="kodi.binary.instance.pvr" version="5.7.0"/></requires>
+  <extension point="xbmc.pvrclient" library_linux="pvr.iptvsimple.multi.so.3.2.2"/>
   <extension point="xbmc.addon.metadata">
     <summary lang="af_ZA">Kodi PVR byvoegsel vir IPTV ondersteuning. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
     <summary lang="az_AZ">IPTV dəstəyi üçün Kodi PVR əlavəsini yükləyin.&#10;https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
@@ -141,6 +143,6 @@
     <disclaimer lang="szl">To je niystabilny softwer! Autōry niy sōm ôdpedzialne za niypodarzōne graniy, niynŏleżne godziny EPG, stracōne godziny i inksze niychciane efekty.</disclaimer>
     <disclaimer lang="tr_TR">Bu kararsız bir yazılımdır! Yazanlar oynatma hatası, yanlış EPG zamanları, harcanmış saatler ya da diğer etkilerden sorumlu değildir.</disclaimer>
     <disclaimer lang="zh_CN">这是不稳定版的软件！作者不对录像失败、错误定时造成时间浪费或其它不良影响负责。</disclaimer>
-    <platform>@PLATFORM@</platform>
+    <platform>linux</platform>
   </extension>
 </addon>

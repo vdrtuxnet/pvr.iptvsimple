@@ -343,9 +343,14 @@ PVR_ERROR GetChannelStreamProperties(const PVR_CHANNEL* channel, PVR_NAMED_VALUE
 
   if (m_data && m_data->GetChannel(*channel, m_currentChannel))
 {
- strncpy(properties[0].strName, PVR_STREAM_PROPERTY_STREAMURL, sizeof(properties[0].strName) - 1);
+    strncpy(properties[0].strName, PVR_STREAM_PROPERTY_STREAMURL, sizeof(properties[0].strName) - 1);
     strncpy(properties[0].strValue, m_currentChannel.strStreamURL.c_str(), sizeof(properties[0].strValue) - 1);
-    *iPropertiesCount = 1;
+    strncpy(properties[1].strName, "inputstreamaddon", sizeof(properties[1].strName));
+    strncpy(properties[1].strValue, "inputstream.adaptive", sizeof(properties[1].strValue));
+    strncpy(properties[2].strName, "inputstream.adaptive.manifest_type", sizeof(properties[2].strName));
+    strncpy(properties[2].strValue, "hls", sizeof(properties[2].strValue));
+    *iPropertiesCount = 3;
+
     return PVR_ERROR_NO_ERROR;
   }
 

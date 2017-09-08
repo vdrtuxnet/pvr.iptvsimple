@@ -516,8 +516,8 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
 
   /* load channels */
   bool bFirst = true;
-  int iCurrentGroupId   = 0;
   int iEPGTimeShift     = 0;
+  std::vector<int> iCurrentGroupId;
 
   PVRIptvChannel tmpChannel;
   tmpChannel.strTvgId       = "";
@@ -625,20 +625,29 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
 
         if (!strGroupName.empty())
         {
+          std::stringstream streamGroups(strGroupName);
           PVRIptvChannelGroup * pGroup;
-          if ((pGroup = FindGroup(strGroupName)) == NULL)
+          iCurrentGroupId.clear();
+          
+          while(std::getline(streamGroups, strGroupName, ';'))
+                  
           {
-            PVRIptvChannelGroup group;
-            group.strGroupName = strGroupName;
-            group.iGroupId = ++iUniqueGroupId;
-            group.bRadio = bRadio;
+            strGroupName = XBMC->UnknownToUTF8(strGroupName.c_str());
+            
+            if ((pGroup = FindGroup(strGroupName)) == NULL)
+            {
+              PVRIptvChannelGroup group;
+              group.strGroupName = strGroupName;
+              group.iGroupId = ++iUniqueGroupId;
+              group.bRadio = bRadio;
 
-            m_groups.push_back(group);
-            iCurrentGroupId = iUniqueGroupId;
-          }
-          else
-          {
-            iCurrentGroupId = pGroup->iGroupId;
+             m_groups.push_back(group);
+              iCurrentGroupId.push_back(iUniqueGroupId);
+            }
+            else
+            {
+              iCurrentGroupId.push_back(pGroup->iGroupId);
+            }
           }
         }
       }
@@ -661,10 +670,11 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
       tmpChannel.strChannelName = StringUtils::Format(source.strChannelNameFormat.c_str(), tmpChannel.strChannelName.c_str());
       channel.strChannelDisplayName = StringUtils::Format(m_sources.at(0).strChannelNameFormat.c_str(), tmpChannel.strChannelName.c_str());
 
-      if (iCurrentGroupId > 0) 
+      std::vector<int>::iterator it;
+      for (auto it = iCurrentGroupId.begin(); it != iCurrentGroupId.end(); ++it)
       {
-        channel.bRadio = m_groups.at(iCurrentGroupId - 1).bRadio;
-        m_groups.at(iCurrentGroupId - 1).members.push_back(iChannelIndex);
+        channel.bRadio = m_groups.at(*it - 1).bRadio;
+        m_groups.at(*it - 1).members.push_back(iChannelIndex);
       }
 
       m_channels.push_back(channel);

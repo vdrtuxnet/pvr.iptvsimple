@@ -39,6 +39,7 @@
 #define TVG_INFO_NAME_MARKER    "tvg-name="
 #define TVG_INFO_LOGO_MARKER    "tvg-logo="
 #define TVG_INFO_SHIFT_MARKER   "tvg-shift="
+#define TVG_INFO_CHNO_MARKER    "tvg-chno="
 #define GROUP_NAME_MARKER       "group-title="
 #define RADIO_MARKER            "radio="
 #define CHANNEL_LOGO_EXTENSION  ".png"
@@ -570,6 +571,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
     {
       bool        bRadio       = false;
       double      fTvgShift    = 0;
+      std::string strChnlNo    = "";
       std::string strChnlName  = "";
       std::string strTvgId     = "";
       std::string strTvgName   = "";
@@ -594,6 +596,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
         strTvgId      = ReadMarkerValue(strInfoLine, TVG_INFO_ID_MARKER);
         strTvgName    = ReadMarkerValue(strInfoLine, TVG_INFO_NAME_MARKER);
         strTvgLogo    = ReadMarkerValue(strInfoLine, TVG_INFO_LOGO_MARKER);
+        strChnlNo     = ReadMarkerValue(strInfoLine, TVG_INFO_CHNO_MARKER);
         strRadio      = ReadMarkerValue(strInfoLine, RADIO_MARKER);
         fTvgShift     = atof(ReadMarkerValue(strInfoLine, TVG_INFO_SHIFT_MARKER).c_str());
         strGroupName  = ReadMarkerValue(strInfoLine, GROUP_NAME_MARKER);
@@ -610,6 +613,11 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
         {
           strTvgLogo = strChnlName;
         }
+
+        if (!strChnlNo.empty()) 
+	{
+         iChannelNum = atoi(strChnlNo.c_str());
+	}
 
         bRadio                = !StringUtils::CompareNoCase(strRadio, "true");
         tmpChannel.strTvgId   = strTvgId;
@@ -652,7 +660,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
       PVRIptvChannel channel;
       channel.iUniqueId         = GetChannelId(tmpChannel.strChannelName.c_str(), strLine.c_str());
       channel.iSourceId         = source.iId;
-      channel.iChannelNumber    = iChannelNum++;
+      channel.iChannelNumber    = iChannelNum;
       channel.strTvgId          = tmpChannel.strTvgId;
       channel.strChannelName    = tmpChannel.strChannelName;
       channel.strTvgName        = tmpChannel.strTvgName;
@@ -661,6 +669,8 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
       channel.bRadio            = tmpChannel.bRadio;
       channel.strStreamURL      = strLine;
       channel.iEncryptionSystem = 0;
+
+      iChannelNum++;
 
       tmpChannel.strChannelName = StringUtils::Format(source.strChannelNameFormat.c_str(), tmpChannel.strChannelName.c_str());
       channel.strChannelDisplayName = StringUtils::Format(m_sources.at(0).strChannelNameFormat.c_str(), tmpChannel.strChannelName.c_str());

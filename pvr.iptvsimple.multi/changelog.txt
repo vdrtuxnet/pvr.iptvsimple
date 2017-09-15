@@ -1,11 +1,15 @@
-v3.0.2
+v2.4.10
+- added Channel number tvg-chno to m3u
+- downsize version to suit pvr.iptvsimple
+
+v2.4.9
 - Fix: Change the line lenght to 4k
 
-v3.0.1
+v2.4.4.2
 - Updated to PVR addon API v5.2.1
 - Change addon ID to pvr.iptvsimple.multi
 
-v3.0.0
+v2.4.4.1
 - Implemented support for multiple (up to 10) m3u sources
 - Added settings for channel, group and logo name format
 - Added support for the url-tvg tag

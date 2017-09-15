@@ -523,11 +523,9 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
   tmpChannel.strTvgLogo     = "";
   tmpChannel.iTvgShift      = 0;
 
-  char szLine[4096];
-  while(stream.getline(szLine, 4096)) 
+  std::string strLine;
+  while(std::getline(stream, strLine))
   {
-  
-    std::string strLine(szLine);
     strLine = StringUtils::TrimRight(strLine, " \t\r\n");
     strLine = StringUtils::TrimLeft(strLine, " \t");
 

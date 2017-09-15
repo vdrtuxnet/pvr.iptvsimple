@@ -292,7 +292,7 @@ bool PVRIptvData::LoadEPG(time_t iStart, time_t iEnd, PVRIptvSource &source, int
   int iReaded = 0;
   std::string data;
   std::string decompressed;
-  std::string strCachedName = StringUtils::Format(TVG_FILE_NAME_FORMAT, source.iId);;
+  std::string strCachedName = StringUtils::Format(TVG_FILE_NAME, source.iId);;
   XBMC->Log(LOG_NOTICE, "Loading EPG: %s", source.strTvgPath.c_str());
 
   int iCount = 0;
@@ -506,7 +506,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
 
   std::string strPlaylistContent;
 
-  if (!GetCachedFileContents(StringUtils::Format(M3U_FILE_NAME_FORMAT, source.iId), source.strM3UPath, strPlaylistContent, source.bCacheM3U))
+  if (!GetCachedFileContents(StringUtils::Format(M3U_FILE_NAME, source.iId), source.strM3UPath, strPlaylistContent, source.bCacheM3U))
   {
     XBMC->Log(LOG_ERROR, "Unable to load playlist file '%s':  file is missing or empty.", source.strM3UPath.c_str());
     return false;

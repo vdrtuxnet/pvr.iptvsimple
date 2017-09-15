@@ -26,9 +26,8 @@
 #include "libXBMC_addon.h"
 #include "libXBMC_pvr.h"
 
-#define PVR_CLIENT_VERSION     "3.0.0"
-#define M3U_FILE_NAME_FORMAT   "iptv_%i.m3u.cache"
-#define TVG_FILE_NAME_FORMAT   "xmltv_%i.xml.cache"
+#define M3U_FILE_NAME          "iptv_%i.m3u.cache"
+#define TVG_FILE_NAME          "xmltv_%i.xml.cache"
 
 /*!
  * @brief PVR macros for string exchange
@@ -41,6 +40,16 @@ extern std::string                   g_strUserPath;
 extern std::string                   g_strClientPath;
 extern ADDON::CHelper_libXBMC_addon *XBMC;
 extern CHelper_libXBMC_pvr          *PVR;
+
+extern std::string g_strM3UPath;
+extern std::string g_strTvgPath;
+extern std::string g_strLogoPath;
+extern int         g_iEPGTimeShift;
+extern int         g_iStartNumber;
+extern bool        g_bTSOverride;
+extern bool        g_bCacheM3U;
+extern bool        g_bCacheEPG;
+extern int         g_iEPGLogos;
 
 extern std::string PathCombine(const std::string &strPath, const std::string &strFileName);
 extern std::string GetClientFilePath(const std::string &strFileName);

@@ -1,0 +1,5 @@
+tinyxml (2.6.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Alex <1988pb@gmail.com>  Fri, 31 Dec 2010 19:57:18 +0800

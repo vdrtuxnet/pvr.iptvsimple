@@ -1,0 +1,10 @@
+/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-build/CMakeFiles/list_install_components.dir
+/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-build/CMakeFiles/rebuild_cache.dir
+/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-build/CMakeFiles/install.dir
+/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-build/CMakeFiles/edit_cache.dir
+/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-build/CMakeFiles/addon-package.dir
+/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-build/CMakeFiles/install/strip.dir
+/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-build/CMakeFiles/pvr.iptvsimple.multi.dir
+/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-build/CMakeFiles/install/local.dir
+/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-build/CMakeFiles/package_source.dir
+/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-build/CMakeFiles/package.dir

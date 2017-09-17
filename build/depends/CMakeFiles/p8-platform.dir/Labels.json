@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/depends/CMakeFiles/p8-platform"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/depends/CMakeFiles/p8-platform.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/depends/CMakeFiles/p8-platform-complete.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-stamp/p8-platform-install.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-stamp/p8-platform-mkdir.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-stamp/p8-platform-download.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-stamp/p8-platform-update.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-stamp/p8-platform-patch.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-stamp/p8-platform-configure.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-stamp/p8-platform-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"p8-platform"
+		],
+		"name" : "p8-platform"
+	}
+}

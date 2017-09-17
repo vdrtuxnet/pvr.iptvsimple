@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/depends/CMakeFiles/tinyxml"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/depends/CMakeFiles/tinyxml.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/depends/CMakeFiles/tinyxml-complete.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-stamp/tinyxml-install.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-stamp/tinyxml-mkdir.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-stamp/tinyxml-download.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-stamp/tinyxml-update.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-stamp/tinyxml-patch.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-stamp/tinyxml-configure.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-stamp/tinyxml-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"tinyxml"
+		],
+		"name" : "tinyxml"
+	}
+}

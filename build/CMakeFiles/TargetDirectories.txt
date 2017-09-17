@@ -1,0 +1,13 @@
+/src/kodi/pvr.iptvsimple.multi/build/CMakeFiles/edit_cache.dir
+/src/kodi/pvr.iptvsimple.multi/build/CMakeFiles/rebuild_cache.dir
+/src/kodi/pvr.iptvsimple.multi/build/CMakeFiles/pvr.iptvsimple.multi.dir
+/src/kodi/pvr.iptvsimple.multi/build/CMakeFiles/package-addons.dir
+/src/kodi/pvr.iptvsimple.multi/build/CMakeFiles/package-pvr.iptvsimple.multi.dir
+/src/kodi/pvr.iptvsimple.multi/build/CMakeFiles/zlib.dir
+/src/kodi/pvr.iptvsimple.multi/build/CMakeFiles/supported_addons.dir
+/src/kodi/pvr.iptvsimple.multi/build/CMakeFiles/need-sudo.dir
+/src/kodi/pvr.iptvsimple.multi/build/depends/CMakeFiles/rebuild_cache.dir
+/src/kodi/pvr.iptvsimple.multi/build/depends/CMakeFiles/edit_cache.dir
+/src/kodi/pvr.iptvsimple.multi/build/depends/CMakeFiles/tinyxml.dir
+/src/kodi/pvr.iptvsimple.multi/build/depends/CMakeFiles/kodi-platform.dir
+/src/kodi/pvr.iptvsimple.multi/build/depends/CMakeFiles/p8-platform.dir

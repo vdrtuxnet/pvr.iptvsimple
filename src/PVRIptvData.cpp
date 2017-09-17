@@ -529,8 +529,6 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
     strLine = StringUtils::TrimRight(strLine, " \t\r\n");
     strLine = StringUtils::TrimLeft(strLine, " \t");
 
-    XBMC->Log(LOG_DEBUG, "Read line: '%s'", strLine.c_str());
-
     if (strLine.empty())
     {
       continue;
@@ -558,10 +556,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
       }
       else
       {
-        XBMC->Log(LOG_ERROR,
-                  "URL '%s' missing %s descriptor on line 1, attempting to "
-                  "parse it anyway.",
-                  m_strM3uUrl.c_str(), M3U_START_MARKER);
+        break;
       }
     }
 
@@ -631,9 +626,16 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
 
         if (!strGroupName.empty())
         {
-          if ((pGroup = FindGroup(strGroupName)) == NULL)
-            {
-              PVRIptvChannelGroup group;
+        std::stringstream streamGroups(strGroupName);
+        PVRIptvChannelGroup * pGroup;
+        iCurrentGroupId.clear();
+        while(std::getline(streamGroups, strGroupName, ';'))
+        {
+              strGroupName = XBMC->UnknownToUTF8(strGroupName.c_str());
+
+           if ((pGroup = FindGroup(strGroupName)) == NULL)
+          {
+               PVRIptvChannelGroup group;
               group.strGroupName = strGroupName;
               group.iGroupId = ++iUniqueGroupId;
               group.bRadio = bRadio;
@@ -651,10 +653,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
     }
     else if (strLine[0] != '#')
     {
-                XBMC->Log(LOG_DEBUG,
-                "Found URL: '%s' (current channel name: '%s')",
-                strLine.c_str(), tmpChannel.strChannelName.c_str());
-
+    
       PVRIptvChannel channel;
       channel.iUniqueId         = GetChannelId(tmpChannel.strChannelName.c_str(), strLine.c_str());
       channel.iSourceId         = source.iId;

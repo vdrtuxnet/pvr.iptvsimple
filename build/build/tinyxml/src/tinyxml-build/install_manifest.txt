@@ -1,0 +1,3 @@
+/src/kodi/pvr.iptvsimple.multi/build/build/depends/include/tinystr.h
+/src/kodi/pvr.iptvsimple.multi/build/build/depends/include/tinyxml.h
+/src/kodi/pvr.iptvsimple.multi/build/build/depends/lib/libtinyxml.a

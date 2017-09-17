@@ -1,0 +1,2 @@
+/usr/bin/ar qc libp8-platform.a  CMakeFiles/p8-platform.dir/src/util/StringUtils.cpp.o
+/usr/bin/ranlib libp8-platform.a

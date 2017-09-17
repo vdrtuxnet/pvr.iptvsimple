@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/CMakeFiles/pvr.iptvsimple.multi"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/CMakeFiles/pvr.iptvsimple.multi.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/CMakeFiles/pvr.iptvsimple.multi-complete.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-stamp/pvr.iptvsimple.multi-install.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-stamp/pvr.iptvsimple.multi-mkdir.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-stamp/pvr.iptvsimple.multi-download.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-stamp/pvr.iptvsimple.multi-update.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-stamp/pvr.iptvsimple.multi-patch.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-stamp/pvr.iptvsimple.multi-configure.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-stamp/pvr.iptvsimple.multi-build.rule"
+		},
+		{
+			"file" : "/src/kodi/pvr.iptvsimple.multi/build/pvr.iptvsimple.multi-prefix/src/pvr.iptvsimple.multi-stamp/pvr.iptvsimple.multi-forcebuild.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"pvr.iptvsimple.multi"
+		],
+		"name" : "pvr.iptvsimple.multi"
+	}
+}

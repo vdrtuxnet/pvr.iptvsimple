@@ -1,0 +1,3 @@
+repository='external project URL'
+module='http://mirrors.kodi.tv/build-deps/sources/tinyxml-2.6.2_2.tar.gz'
+tag=''

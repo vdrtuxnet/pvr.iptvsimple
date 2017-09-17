@@ -1,0 +1,12 @@
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/install.dir
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/rebuild_cache.dir
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/list_install_components.dir
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/edit_cache.dir
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/example.dir
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/zlib.dir
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/minigzip.dir
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/install/local.dir
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/test.dir
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/minigzip64.dir
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/example64.dir
+/src/kodi/pvr.iptvsimple.multi/build/build/zlib/src/zlib-build/CMakeFiles/install/strip.dir

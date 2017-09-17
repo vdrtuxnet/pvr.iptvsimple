@@ -1,0 +1,35 @@
+Source: tinyxml
+Priority: extra
+Maintainer: Alex <1988pb@gmail.com>
+Build-Depends: debhelper (>= 7), autotools-dev
+Standards-Version: 3.8.3
+Section: libs
+Homepage: <insert the upstream URL, if relevant>
+
+Package: libtinyxml-dev
+Section: libdevel
+Architecture: any
+Depends: libtinyxml(= ${binary:Version})
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
+
+Package: libtinyxml
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
+
+Package: libtinyxml-dbg
+Section: debug
+Architecture: all
+Depends: libtinyxml, ${shlibs:Depends}, ${misc:Depends}
+Description: TinyXML dbg
+ TinyXML is a simple, small, C++ XML parser that can be easily integrated into other programs.
+
+Package: xmltest
+Section: test
+Architecture: any
+Depends: libtinyxml, ${shlibs:Depends}, ${misc:Depends}
+Description: TinyXML Test
+ TinyXML is a simple, small, C++ XML parser that can be easily integrated into other programs.

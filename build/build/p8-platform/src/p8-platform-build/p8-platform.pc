@@ -1,0 +1,10 @@
+prefix=/src/kodi/pvr.iptvsimple.multi/build/build/depends
+libdir=/src/kodi/pvr.iptvsimple.multi/build/build/depends/lib
+includedir=/src/kodi/pvr.iptvsimple.multi/build/build/depends/include
+DEPENDENCIES=-lpthread
+
+Name: p8-platform
+Description: Pulse-Eight platform support library 2.0
+Version: 2.0.1
+Libs: -L${libdir} -lp8-platform
+Cflags: -I${includedir}

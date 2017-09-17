@@ -1,2 +1,0 @@
-/usr/bin/ar qc libkodiplatform.a  CMakeFiles/kodiplatform.dir/src/util/XMLUtils.cpp.o
-/usr/bin/ranlib libkodiplatform.a

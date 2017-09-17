@@ -1,7 +1,0 @@
-/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-build/CMakeFiles/rebuild_cache.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-build/CMakeFiles/install/strip.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-build/CMakeFiles/edit_cache.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-build/CMakeFiles/install.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-build/CMakeFiles/install/local.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-build/CMakeFiles/tinyxml.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/tinyxml/src/tinyxml-build/CMakeFiles/list_install_components.dir

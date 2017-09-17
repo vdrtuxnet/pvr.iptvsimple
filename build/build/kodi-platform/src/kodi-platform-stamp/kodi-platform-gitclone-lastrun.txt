@@ -1,3 +1,0 @@
-repository='https://github.com/xbmc/kodi-platform'
-module=''
-tag=''

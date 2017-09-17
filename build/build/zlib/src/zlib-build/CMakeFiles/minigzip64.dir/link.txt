@@ -1,1 +1,0 @@
-/usr/bin/cc   -DTARGET_POSIX -DTARGET_LINUX -D_LINUX -fPIC -g  -L/src/kodi/pvr.iptvsimple.multi/build/build/depends/lib CMakeFiles/minigzip64.dir/test/minigzip.o  -o minigzip64 -rdynamic libz.a 

@@ -1,4 +1,0 @@
-/src/kodi/pvr.iptvsimple.multi/build/build/depends/lib/libkodiplatform.a
-/src/kodi/pvr.iptvsimple.multi/build/build/depends/include/kodi/util/XMLUtils.h
-/src/kodi/pvr.iptvsimple.multi/build/build/depends/lib/pkgconfig/kodiplatform.pc
-/src/kodi/pvr.iptvsimple.multi/build/build/depends/lib/kodiplatform/kodiplatform-config.cmake

@@ -1,3 +1,0 @@
-repository='external project URL'
-module='http://mirrors.xbmc.org/build-deps/sources/zlib-1.2.7.tar.gz'
-tag=''

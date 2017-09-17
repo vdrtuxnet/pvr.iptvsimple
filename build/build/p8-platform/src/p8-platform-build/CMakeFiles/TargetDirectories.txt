@@ -1,7 +1,0 @@
-/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-build/CMakeFiles/rebuild_cache.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-build/CMakeFiles/install/strip.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-build/CMakeFiles/p8-platform.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-build/CMakeFiles/install.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-build/CMakeFiles/install/local.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-build/CMakeFiles/list_install_components.dir
-/src/kodi/pvr.iptvsimple.multi/build/build/p8-platform/src/p8-platform-build/CMakeFiles/edit_cache.dir

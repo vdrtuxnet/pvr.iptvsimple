@@ -1,1 +1,0 @@
-/usr/bin/cc   -DTARGET_POSIX -DTARGET_LINUX -D_LINUX -fPIC -g  -L/src/kodi/pvr.iptvsimple.multi/build/build/depends/lib CMakeFiles/example.dir/test/example.o  -o example -rdynamic libz.a 

@@ -763,11 +763,13 @@ bool PVRIptvData::LoadGenres(void)
 
 int PVRIptvData::GetChannelsAmount(void)
 {
+  P8PLATFORM::CLockObject lock(m_mutex);
   return m_channels.size();
 }
 
 PVR_ERROR PVRIptvData::GetChannels(ADDON_HANDLE handle, bool bRadio)
 {
+  P8PLATFORM::CLockObject lock(m_mutex);
   for (unsigned int iChannelPtr = 0; iChannelPtr < m_channels.size(); iChannelPtr++)
   {
     PVRIptvChannel &channel = m_channels.at(iChannelPtr);
@@ -793,6 +795,7 @@ PVR_ERROR PVRIptvData::GetChannels(ADDON_HANDLE handle, bool bRadio)
 
 bool PVRIptvData::GetChannel(const PVR_CHANNEL &channel, PVRIptvChannel &myChannel)
 {
+  P8PLATFORM::CLockObject lock(m_mutex);
   for (unsigned int iChannelPtr = 0; iChannelPtr < m_channels.size(); iChannelPtr++)
   {
     PVRIptvChannel &thisChannel = m_channels.at(iChannelPtr);
@@ -816,11 +819,13 @@ bool PVRIptvData::GetChannel(const PVR_CHANNEL &channel, PVRIptvChannel &myChann
 
 int PVRIptvData::GetChannelGroupsAmount(void)
 {
+  P8PLATFORM::CLockObject lock(m_mutex);
   return m_groups.size();
 }
 
 PVR_ERROR PVRIptvData::GetChannelGroups(ADDON_HANDLE handle, bool bRadio)
 {
+  P8PLATFORM::CLockObject lock(m_mutex);
   std::vector<PVRIptvChannelGroup>::iterator it;
   for (it = m_groups.begin(); it != m_groups.end(); ++it)
   {
@@ -842,6 +847,7 @@ PVR_ERROR PVRIptvData::GetChannelGroups(ADDON_HANDLE handle, bool bRadio)
 
 PVR_ERROR PVRIptvData::GetChannelGroupMembers(ADDON_HANDLE handle, const PVR_CHANNEL_GROUP &group)
 {
+  P8PLATFORM::CLockObject lock(m_mutex);
   PVRIptvChannelGroup *myGroup;
   if ((myGroup = FindGroup(group.strGroupName)) != NULL)
   {
@@ -868,6 +874,7 @@ PVR_ERROR PVRIptvData::GetChannelGroupMembers(ADDON_HANDLE handle, const PVR_CHA
 
 PVR_ERROR PVRIptvData::GetEPGForChannel(ADDON_HANDLE handle, const PVR_CHANNEL &channel, time_t iStart, time_t iEnd)
 {
+  P8PLATFORM::CLockObject lock(m_mutex);
   std::vector<PVRIptvChannel>::iterator myChannel;
   for (myChannel = m_channels.begin(); myChannel < m_channels.end(); ++myChannel)
   {

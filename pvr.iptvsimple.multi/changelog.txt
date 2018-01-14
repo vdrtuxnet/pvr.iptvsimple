@@ -1,6 +1,9 @@
+v3.4.0
+- Updated to PVR addon API v5.8.0
+
 v3.3.0
  - Updated to PVR addon API v5.7.0
- - - Added support for multiple groups per channel, separated by semicolon
+ - Added support for multiple groups per channel, separated by semicolon
 
 v3.2.2
  - Updated to PVR addon API v5.6.0

@@ -45,6 +45,7 @@
 #define GROUP_NAME_MARKER       "group-title="
 #define KODIPROP_MARKER         "#KODIPROP:"
 #define RADIO_MARKER            "radio="
+#define PLAYLIST_TYPE_MARKER    "#EXT-X-PLAYLIST-TYPE:"
 #define CHANNEL_LOGO_EXTENSION  ".png"
 #define SECONDS_IN_DAY          86400
 #define GENRES_MAP_FILENAME     "genres.xml"
@@ -517,6 +518,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
 
   /* load channels */
   bool bFirst = true;
+  bool bIsRealTime  = true;
   int iEPGTimeShift     = 0;
   std::vector<int> iCurrentGroupId;
 
@@ -548,7 +550,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
       {
         strLine.erase(0, 3);
       }
-      if (StringUtils::Left(strLine, (int)strlen(M3U_START_MARKER)) == M3U_START_MARKER)
+      if (StringUtils::Left(strLine, strlen(M3U_START_MARKER)) == M3U_START_MARKER)
       {
         std::string strTvgUrl = ReadMarkerValue(strLine, TVG_INFO_URL_MARKER);
         double fTvgShift = atof(ReadMarkerValue(strLine, TVG_INFO_SHIFT_MARKER).c_str());
@@ -567,7 +569,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
       }
     }
 
-    if (StringUtils::Left(strLine, (int)strlen(M3U_INFO_MARKER)) == M3U_INFO_MARKER)
+    if (StringUtils::Left(strLine, strlen(M3U_INFO_MARKER)) == M3U_INFO_MARKER)
     {
       bool        bRadio       = false;
       double      fTvgShift    = 0;
@@ -653,7 +655,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
         }
       }
     }
-    else if (StringUtils::Left(strLine, (int)strlen(KODIPROP_MARKER)) == KODIPROP_MARKER)
+    else if (StringUtils::Left(strLine, strlen(KODIPROP_MARKER)) == KODIPROP_MARKER)
     {
       std::string value = ReadMarkerValue(strLine, KODIPROP_MARKER);
       auto pos = value.find('=');
@@ -663,9 +665,17 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
         std::string propValue = value.substr(pos+1);
         tmpChannel.properties.insert({prop, propValue});
       }
-    } 
+    }
+     else if (StringUtils::Left(strLine, strlen(PLAYLIST_TYPE_MARKER)) == PLAYLIST_TYPE_MARKER)
+    {
+      if (ReadMarkerValue(strLine, PLAYLIST_TYPE_MARKER) == "VOD")
+        bIsRealTime = false;
+    }
     else if (strLine[0] != '#')
     {
+    if (bIsRealTime)
+        tmpChannel.properties.insert({PVR_STREAM_PROPERTY_ISREALTIMESTREAM, "true"});
+
       PVRIptvChannel channel;
       channel.iUniqueId         = GetChannelId(tmpChannel.strChannelName.c_str(), strLine.c_str());
       channel.iSourceId         = source.iId;
@@ -699,6 +709,8 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
       tmpChannel.strTvgLogo     = "";
       tmpChannel.iTvgShift      = 0;
       tmpChannel.bRadio         = false;
+      tmpChannel.properties.clear();
+      bIsRealTime = true;
     }
   }
   

@@ -29,6 +29,9 @@ set(IPTV_SOURCES src/client.cpp
 set(IPTV_HEADERS src/client.h
                  src/PVRIptvData.h)
 
+addon_version(pvr.iptvsimple.multi IPTV)
+add_definitions(-DIPTV_VERSION=${IPTV_VERSION})
+
 build_addon(pvr.iptvsimple.multi IPTV DEPLIBS)
 
 include(CPack)

@@ -43,6 +43,7 @@
 #define TVG_INFO_LOGO_MARKER    "tvg-logo="
 #define TVG_INFO_SHIFT_MARKER   "tvg-shift="
 #define GROUP_NAME_MARKER       "group-title="
+#define KODIPROP_MARKER         "#KODIPROP:"
 #define RADIO_MARKER            "radio="
 #define CHANNEL_LOGO_EXTENSION  ".png"
 #define SECONDS_IN_DAY          86400
@@ -651,6 +652,17 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
           }
         }
       }
+    }
+    else if (StringUtils::Left(strLine, (int)strlen(KODIPROP_MARKER)) == KODIPROP_MARKER)
+    {
+      std::string value = ReadMarkerValue(strLine, KODIPROP_MARKER);
+      auto pos = value.find('=');
+      if (pos != std::string::npos)
+      {
+        std::string prop = value.substr(0,pos);
+        std::string propValue = value.substr(pos+1);
+        tmpChannel.properties.insert({prop, propValue});
+      }
     } 
     else if (strLine[0] != '#')
     {
@@ -664,6 +676,7 @@ bool PVRIptvData::LoadPlayList(PVRIptvSource &source, int &iChannelIndex, int &i
       channel.strTvgLogo        = tmpChannel.strTvgLogo;
       channel.iTvgShift         = tmpChannel.iTvgShift;
       channel.bRadio            = tmpChannel.bRadio;
+      channel.properties        = tmpChannel.properties;
       channel.strStreamURL      = strLine;
       channel.iEncryptionSystem = 0;
 
@@ -809,6 +822,7 @@ bool PVRIptvData::GetChannel(const PVR_CHANNEL &channel, PVRIptvChannel &myChann
       myChannel.strChannelDisplayName = thisChannel.strChannelDisplayName;
       myChannel.strLogoPath           = thisChannel.strLogoPath;
       myChannel.strStreamURL          = thisChannel.strStreamURL;
+      myChannel.properties            = thisChannel.properties;
 
       return true;
     }

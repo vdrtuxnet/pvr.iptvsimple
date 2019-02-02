@@ -83,6 +83,7 @@ struct PVRIptvChannel
   std::string strTvgId;
   std::string strTvgName;
   std::string strTvgLogo;
+  std::map<std::string, std::string> properties;
 };
 
 struct PVRIptvChannelGroup
